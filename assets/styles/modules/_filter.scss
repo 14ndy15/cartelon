@@ -1,0 +1,130 @@
+.filter{
+    margin: 1em auto;
+    padding: 0;
+    background-color: $mainSoftGrey;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+
+    @mixin atSmall {
+        margin-left: calc(-65px - 13px);
+        margin-right: calc(-65px - 13px);
+    }
+
+    & * {
+        display: flex;
+    }
+
+    & form{
+        padding: 1em;
+        margin: auto;
+        flex-flow: wrap;
+    }
+
+    &__text{        
+        margin: 1em;
+        padding: 0.5em;
+        position: relative;
+        text-align: center;
+        color: $mainGrey;
+
+        @mixin atMedium {
+            margin: auto;
+            line-height: 1.8rem;
+            font-size: 1.3rem;
+            text-align: justify;
+        }
+    }
+
+    &__input{
+        margin: 1em;
+        padding: 0.5em;
+        padding-right: 1em;
+        color: $mainGrey;
+        border: 1px rgba($mainGrey, 0.3);
+        border-radius: 20px;
+        width: calc(100% - 4.5em);
+        font-size: 1.3rem;
+
+        @mixin atMedium {
+            width: 30%;
+            margin: 1.8em;
+            margin-right: 0;
+            padding-left: 1em;
+            padding-right: 3em;
+            border-bottom-right-radius: 0;
+            border-top-right-radius: 0;
+        }
+    }
+
+    &__reset{
+        position: relative;
+        width: 2em;
+        margin: 1.7em 0 ;
+        background-color: #fff;
+        left: -4.5em;
+        cursor: pointer;
+        transition: transform .3s ease-in-out;
+
+        @mixin atMedium{
+            width: 3em;
+            left: -3.5em;
+            margin: 3em 0 ;
+        }
+
+        &::before{
+            width: 1em;
+            height: .2em;
+            background-color: $mainGrey;
+            content: '';
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            transform:  translate(-50%, -50%) rotate(45deg);
+            transform-origin: 50% 50%;
+            transition: transform .3s ease-in-out;
+
+            @mixin atMedium{
+                width: 1.5em;
+            }
+
+        }
+
+        &::after {
+            width: 1em;
+            height: .2em;
+            background-color: $mainGrey;
+            content: '';
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            transform-origin: 50% 50%;
+            transition: transform .3s ease-in-out;
+
+            @mixin atMedium{
+                width: 1.5em;
+            }
+        }
+
+        &:hover{
+            transform: rotate(180deg);
+
+        }
+    }
+
+    &__button{
+        margin: auto;
+        padding: auto;
+        cursor: pointer;
+        border: 2px #fff solid;
+
+        @mixin atMedium{
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            margin: 2.2em;
+            padding: 1.5em;
+            margin-left: -3em;
+        }
+    }
+}

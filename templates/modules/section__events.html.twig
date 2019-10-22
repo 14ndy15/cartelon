@@ -1,0 +1,181 @@
+<section class="section" id="events" data-nav-link="#events-link" data-nav-link-prev="#posters-link">
+    <div class="wrapper wrapper-medium">
+        <h2 class="section__title">Eventos</h2>
+
+        {% set eventFirst = events | first %}
+        <div id="event_0" class="info-block">
+            <div class="info-block__image">
+                <img
+                        class="lazyload blur-up"
+                        decoding="async"
+                        sizes="(max-width: 760px) 50vw, 90vw"
+                        src="{{ asset(eventFirst.webPath(20)) }}"
+                        data-srcset="
+                    {% for dimension in eventFirst.getConstraintWideDimensions %}
+                        {% if not loop.last %}
+                            {{ asset(eventFirst.webPath(dimension)) }} {{ dimension }}w,
+                        {% else %}
+                            {{ asset(eventFirst.webPath(dimension)) }} {{ dimension }}w
+                        {% endif %}
+                    {% endfor %}
+                " alt="{{ eventFirst.name }}">
+            </div>
+
+            <div class="info-block__description
+                    info-block__description--float">
+                <h3 class="info-block__description__title">{{ eventFirst.name }}</h3>
+                <h4 class="info-block__description__subtitle">
+                    {{ eventFirst.datetime | localizeddate('full', 'short', 'es') }}
+                    <br>
+                    <strong>Lugar:</strong> {{ eventFirst.place }}
+                </h4>
+                <p class="info-block__description__text">
+                    {{ eventFirst.description | slice (0, 250) | nl2br  }}...
+                </p>
+                <br/>
+                <div class="event__button event__button--event-0 wrapper--center-text">
+                    <a class="btn btn--blue" href="#event_expand_0" data-event-expand="#event_expand_0" data-event="#event_0">Ver más</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-event__expand">
+
+            <div id="event_expand_0" class="event__expand">
+
+                <div>
+                    <div class="event__expand__close btn__close"></div>
+                    <div class="event__expand__carousel">
+                        {% for imageInGallery in eventFirst.imageGalleries %}
+                            <div class="event__expand__carousel__cell">
+                                <img
+                                    class="event__expand__image lazyload blur-up"
+                                    src="{{ asset(imageInGallery.getWebPath(20)) }}"
+                                    sizes="(max-width: 799px) 90vw, 100vw"
+                                    data-srcset="
+                                {% for dimension in imageInGallery.getConstraintWideDimensions %}
+                                    {% if not loop.last %}
+                                        {{ asset(imageInGallery.webPath(dimension)) }} {{ dimension }}w,
+                                    {% else %}
+                                        {{ asset(imageInGallery.webPath(dimension)) }} {{ dimension }}w
+                                    {% endif %}
+                                {% endfor %}"
+                                alt="{{ imageInGallery.description }}">
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+                    <div class="wrapper">
+                        <h3 class="event__expand__title">{{ eventFirst.name }}</h3>
+                        <h4 class="event__expand__subtitle">{{ eventFirst.datetime | localizeddate('full', 'short', 'es') }}, {{ eventFirst.place }}</h4>
+                        <p class="event__expand__text">
+                            {{ eventFirst.description | nl2br }}
+                        </p>
+                        <a data-collapse="true" href="#event_0">
+                            <div class="btn__collapse">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="events-container" class="section__container">
+            {% for event in events | slice(1 , events | length) %}
+                {% set index = loop.index %}
+                {% if loop.index0 % 2 == 0%}
+                    <div class="grid-event">
+                {% endif %}
+
+                <div id="event_{{ index }}" class="event
+                                                    grid-event__{{ loop.index0 % 2 ==0 ? 'first' : 'second' }}
+                                                    {{ (loop.last and (events | length % 2 ==0)) ? 'event--center' : ''}}">
+                    <img
+                        class="lazyload blur-up"
+                        decoding="async"
+                        sizes="(max-width: 760px) 50vw, 90vw"
+                        src="{{ asset(event.webPath(20)) }}"
+                        data-srcset="
+                        {% for dimension in event.getConstraintWideDimensions %}
+                            {% if not loop.last %}
+                                {{ asset(event.webPath(dimension)) }} {{ dimension }}w,
+                            {% else %}
+                                {{ asset(event.webPath(dimension)) }} {{ dimension }}w
+                            {% endif %}
+                        {% endfor %}
+                        " alt="{{ event.name }}">
+                    <div class="event__description">
+                        <h4 class="event__title">{{ event.name }}</h4>
+                        <p class="event__description__text">
+                            {{ event.datetime | localizeddate('full', 'short', 'es') }}
+                            <br/>
+                            <strong>Lugar: </strong> {{ event.place }}
+                        </p>
+                    </div>
+                    <div class=" event__button wrapper--center-text">
+                        <a class="btn" href="#event_expand_{{ index }}" data-event-expand="#event_expand_{{ index }}" data-event="#event_{{ index }}">Ver más</a>
+                    </div>
+                </div>
+
+                <div class="grid-event__expand">
+
+                    <div id="event_expand_{{ index }}" class="event__expand">
+
+                        <div>
+                            <div class="event__expand__close btn__close"></div>
+                            <div class="event__expand__carousel" >
+                                {% for imageInGallery in event.imageGalleries %}
+                                    <div class="event__expand__carousel__cell">
+                                        <img
+                                            class="event__expand__image lazyload blur-up"
+                                            src="{{ asset(imageInGallery.getWebPath(20)) }}"
+                                            sizes="(max-width: 799px) 90vw, 100vw"
+                                            data-srcset="
+                                            {% for dimension in imageInGallery.getConstraintWideDimensions %}
+                                                {% if not loop.last %}
+                                                    {{ asset(imageInGallery.webPath(dimension)) }} {{ dimension }}w,
+                                                {% else %}
+                                                    {{ asset(imageInGallery.webPath(dimension)) }} {{ dimension }}w
+                                                {% endif %}
+                                            {% endfor %}"
+                                            alt="{{ imageInGallery.description }}">
+                                    </div>
+                                {% endfor %}
+
+                            </div>
+
+                            <div class="wrapper">
+                                <h3 class="event__expand__title">{{ event.name }}</h3>
+                                <h4 class="event__expand__subtitle">{{ event.datetime | localizeddate('full', 'short', 'es') }}, {{ event.place }}</h4>
+                                <p class="event__expand__text">
+                                    {{ event.description | nl2br }}
+                                </p>
+                                <a data-collapse="true" href="#event_{{ index }}">
+                                    <div class="btn__collapse">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                {% if loop.index0 % 2 == 1 or loop.last%}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        {% if moreEvent %}
+            <div id="events__load__wrapper" class="load__animation__wrapper">
+                <div class="load__animation__wrapper__element"></div>
+            </div>
+
+            <div id="wrapper-loadMoreEvents" class="wrapper--center-text">
+                <a href="#" id="loadMoreEvents" class="btn btn--blue-inverse">Ver más eventos</a>
+            </div>
+        {% endif %}
+    </div>
+</section>

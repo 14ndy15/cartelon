@@ -1,0 +1,24 @@
+.section{
+    padding: $paddingVertical 0;
+
+    &__container{
+        margin-bottom: 3em;
+    }
+
+    @mixin atLarge {
+        padding: 3.25rem 0;
+      }
+      
+    &__title{
+        text-align: center;
+        font-weight: 700;
+        padding-bottom: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    &--light-dark{
+        background-color: $mainLightDark;
+        color: #fff;
+        
+    }
+}

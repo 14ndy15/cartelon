@@ -1,0 +1,38 @@
+<section class="section section--light-dark" id="videos" data-nav-link="#videos-link" data-nav-link-prev="#events-link">
+    <h2 class="section__title">Video Galería</h2>
+
+    <div class="wrapper wrapper--center-text">
+        <div class="video">
+            <div id="videos-container" class="section__container row row--gutters row--gutters-bottom-child">
+
+                    {% for video in videos %}
+                        <div class="row__medium-6 video__item">
+                            <iframe
+                                class="lazyload"
+                                width="560"
+                                height="411"
+                                data-src="https://www.facebook.com/plugins/video.php?href={{ video.iframe | url_encode }}&show_text=0&width=560"
+                                style="border:none;overflow:hidden"
+                                scrolling="no"
+                                frameborder="0"
+                                allowTransparency="true"
+                                allowFullScreen>
+                            </iframe>
+                        </div>
+                    {% endfor %}
+
+            </div>
+
+            {% if moreVideos %}
+                <div id="videos__load__wrapper" class="load__animation__wrapper load__animation__wrapper__element--is-visible">
+                    <div class="load__animation__wrapper__element"></div>
+                </div>
+
+                <div id="wrapper-loadMoreVideos" class="wrapper--center-text">
+                    <a href="#" id="loadMoreVideos" class="btn btn--blue-inverse">Ver más videos</a>
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+</section>

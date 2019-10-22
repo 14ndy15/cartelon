@@ -1,0 +1,75 @@
+{% set umbrellaSlides = ['assets/images/hero/Grafica-08.jpg',
+                            'assets/images/hero/Grafica-09.jpg',
+                            'assets/images/hero/Grafica-10.jpg'] %}
+{% set orders = [[0,1,2], [0,2,1], [1,0,2], [1,2,0]] %}
+
+
+<section id="start" data-nav-link="#start-link"></section>
+    <div class="carousel">
+
+        {% for slide in slides %}
+            <div class="carousel__cell">
+                <div class="large-hero">
+                    <div class="large-hero__image-background"
+                         style="background-image: url('{{ asset(slide.getFileBackgroundWebPath) }}');">
+                    </div>
+
+                    <img class="large-hero__image-poster lazyload blur-up"
+                         src="{{ asset(slide.getWebPath(20)) }}"
+                         sizes="(max-width: 799px) 0vw, 50vw"
+                         data-srcset="
+                                {% for dimension in slide.getConstraintWideDimensions %}
+                                    {% if not loop.last %}
+                                        {{ asset(slide.webPath(dimension)) }} {{ dimension }}w,
+                                    {% else %}
+                                        {{ asset(slide.webPath(dimension)) }} {{ dimension }}w
+                                    {% endif %}
+                                {% endfor %}
+                          "
+                         alt="cartelon slide">
+
+                    <img class="large-hero__logo blur-up lazyload" src="{{ asset('assets/images/hero-white.svg') }}">
+                    <div class="large-hero__text-content">
+                        <a class="btn" href="#us">Conocer más</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+        {% if slides | length > 0 %}
+
+            <div class="carousel__cell">
+                <div class="large-hero">
+                    <div class="large-hero__image-background large-hero__image-background--no-blur"
+                         style="background-image: url('{{ asset(random(umbrellaSlides)) }}');">
+                    </div>
+
+                    <img class="large-hero__logo blur-up lazyload" src="{{ asset('assets/images/hero-on.svg') }}">
+                    <div class="large-hero__text-content">
+                        <a class="btn" href="#us">Conocer más</a>
+                    </div>
+                </div>
+            </div>
+
+        {% else %}
+
+            {% for order in random(orders) %}
+
+                <div class="carousel__cell">
+                    <div class="large-hero">
+                        <div class="large-hero__image-background large-hero__image-background--no-blur"
+                             style="background-image: url('{{ asset(umbrellaSlides[order]) }}');">
+                        </div>
+
+                        <img class="large-hero__logo blur-up lazyload" src="{{ asset('assets/images/hero-on.svg') }}">
+                        <div class="large-hero__text-content">
+                            <a class="btn" href="#us">Conocer más</a>
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+        {% endif %}
+
+    </div>
+</section>

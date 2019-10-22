@@ -1,0 +1,229 @@
+.btn{
+    background-color: #fff;
+    border-radius: 40px;
+    padding: 1.1rem 2rem; 
+    text-transform: uppercase;
+    font-weight: 500;
+    text-decoration: none;
+    color: $mainDark;
+
+    @mixin atSmall {
+        padding: 1.1rem 3.5rem;
+    }
+
+
+
+    &--blue{
+        color: $mainBlue;
+    }
+
+    &--blue-inverse{
+        color: #fff;
+        background-color: $mainBlue;
+    }
+}
+
+.btn__close{
+        border-radius: 50%;
+        width: 2em;
+        height: 2em;
+        position: absolute;
+        top: 1em;
+        right: 1em;
+        background-color: $mainBlue;
+        z-index: 1;
+        cursor: pointer;
+        transition: background-color 5s ease-in-out;
+
+        @mixin atSmall {
+            width: 3em;
+            height: 3em;
+            top: 2.5em;
+            right: 2.5em;
+        }
+
+        &::before{
+            width: 1em;
+            height: .3em;
+            background-color: #fff;
+            content: '';
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            transform:  translate(-50%, -50%) rotate(45deg);  
+            transform-origin: 50% 50%;
+
+            @mixin atSmall {
+                width: 2em;
+            }
+        }
+
+        &::after{
+            width: 1em;
+            height: .3em;
+            background-color: #fff;
+            content: '';
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            transform:  translate(-50%, -50%) rotate(-45deg);  
+            transform-origin: 50% 50%;
+
+            @mixin atSmall {
+                width: 2em;
+            }
+        }
+    }
+
+.btn__prev{
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+    position: absolute;
+    top: 50%;
+    left: .5em;
+    transform: translateY(-50%);
+    
+    background-color: $mainBlue;
+    z-index: 1;
+    cursor: pointer;
+    transition: transform .3s ease-in-out;
+
+    @mixin atSmall{
+        left: 2em;
+        width: 3rem;
+        height: 3rem;
+    }
+
+    &:hover{
+        transform-origin: 50% 50%;
+        transform: scale(1.2) translateY(-50%);
+    }
+
+    &::before{
+        width: .8em;
+        height: 0.3em;
+        background-color: #fff;
+        content: '';
+        top: 45%;
+        left: 45%;
+        position: absolute;
+        transform:  translate(-50%, -50%) rotate(45deg);  
+        transform-origin: 0 100%;
+
+        @mixin atSmall {
+            width: 1em;
+        }
+    }
+
+    &::after{
+        width: .8em;
+        height: 0.3em;
+        background-color: #fff;
+        content: '';
+        top: 50%;
+        left: 53%;
+        position: absolute;
+        transform:  translate(-50%, -50%) rotate(-45deg);  
+        transform-origin: 0 100%;
+
+        @mixin atSmall {
+            width: 1em;
+        }
+    }
+}
+    
+.btn__next{
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: .5em;
+    background-color: $mainBlue;
+    z-index: 1;
+    cursor: pointer;
+    transition: transform .3s ease-in-out;
+
+    @mixin atSmall {
+        width: 3rem;
+        height: 3rem;
+        right: 2em;;
+    }
+
+    &:hover{
+        transform-origin: 50% 50%;
+        transform: scale(1.2) translateY(-50%);
+    }
+
+    &::before{
+        width: .8em;
+        height: 0.3em;
+        background-color: #fff;
+        content: '';
+        top: 47%;
+        left: 50%;
+        position: absolute;
+        transform:  translate(-50%, -50%) rotate(-45deg);  
+        transform-origin: 100% 0%;
+
+        @mixin atSmall {
+            width: 1em;
+        }
+    }
+
+    &::after{
+        width: .8em;
+        height: 0.3em;
+        background-color: #fff;
+        content: '';
+        top: 49%;
+        left: 49%;
+        position: absolute;
+        transform:  translate(-50%, -50%) rotate(45deg);  
+        transform-origin: 100% 100%;
+
+        @mixin atSmall {
+            width: 1em;
+        }
+    }
+}
+
+.btn__collapse{
+    position: relative;
+    width: 3em;
+    height: 3em;
+    bottom: -2em;
+    margin: auto;
+    background-color: $mainDark;
+    transform: translate(-50%, -50%);     
+    border-radius: 50%;
+    z-index: 1;
+    border: 2px $mainBlue solid;
+
+    &::before{
+        content: '';
+        width: 1.5em;
+        height: .3em;
+        background-color: white;
+        position: absolute;
+        top: 60%;
+        left: 46%;
+        transform: translateY(-50%) translateX(-50%) rotate(-45deg);
+        transform-origin: 0% 100%;
+    }
+
+    &::after{
+        content: '';
+        width: 1.5em;
+        height: .3em;
+        background-color: white;
+        position: absolute;
+        top: 60%;
+        right: 46%;
+        transform: translateY(-50%) translateX(50%) rotate(45deg);
+        transform-origin: 100% 100%;
+    }
+}
+

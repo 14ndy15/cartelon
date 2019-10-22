@@ -1,0 +1,54 @@
+.blur-up {
+    filter: blur(8px);
+    transition: filter 600ms;
+
+    &.lazyloaded {
+        filter: blur(0);
+    }
+}
+
+.poster__item{
+
+    & .blur-up.lazyload {
+        box-shadow: none;
+    }
+
+    & .blur-up.lazyloaded {
+        box-shadow:  0 0 .2em $mainGrey !important;
+    
+        @mixin atSmall {
+            box-shadow:  0 0 .7em $mainGrey !important;
+        }
+    }
+}
+
+
+.event {
+
+    & .blur-up{
+        transition: filter 600ms;
+
+        &.lazyloaded{
+            filter: brightness(50%) blur(0);
+        }
+    }
+    &--visible .blur-up.lazyloaded{
+        filter: brightness(100%) blur(0);
+    }
+}
+
+.logo{
+    width: 250px;
+    margin: 1rem auto;
+    margin-bottom: 2.5rem;
+
+    .blur-up{
+        filter: grayscale(0.8) blur(8px);
+        transition: filter 400ms;
+
+         &.lazyloaded{
+            filter: grayscale(0.8) blur(0);
+         }
+    }
+}
+

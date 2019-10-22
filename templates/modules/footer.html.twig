@@ -1,0 +1,96 @@
+<footer class="footer">
+
+    <div class="wrapper">
+        <div class="row row--gutters">
+            <div class="row__medium-2">
+                <div class="footer__logo footer--subsection footer--subsection--m-t">
+                    <img class="lazyload" data-src="{{ asset('assets/images/icons/logo_footer.svg') }}" alt="">
+                </div>
+            </div>
+
+            <div class="row__medium-5">
+                <div class="footer__subscription footer--subsection">
+                    <p>Suscríbete a nuestra lista de correos y te enviaremos
+                        noticias, concursos y convocatorias abiertas
+                        relacionadas con el mundo del cartel.
+                    </p>
+
+                    <form class="footer__subscription__form" action="http://cartelon.test/index.php/mail" method="POST">
+                        <input class="footer__subscription__form__item footer__subscription__form__item__email" type="email" placeholder="Su correo" required>
+                        <input class="footer__subscription__form__item footer__subscription__form__item__submit" type="submit" value="Suscribirse">
+                    </form>
+
+                    <p class="footer__subscription__message"></p>
+
+
+                </div>
+            </div>
+
+            <div class="row__medium-5">
+                <div class="footer__contact footer--subsection">
+                    <address>
+                        <dl>
+                            {% if projectInfo and projectInfo.address %}
+                            <dt class="footer__contact__item">
+                                <img class="lazyload" data-src="{{ asset('assets/images/icons/marker.svg') }}" alt="">
+                                <p>Direccion: {{ projectInfo.address }}</p>
+                            </dt>
+                            {% endif %}
+                            {% if projectInfo and projectInfo.email %}
+                            <dt class="footer__contact__item">
+                                <p>
+                                    ¿Interesado en nuestras producciones?
+                                    <br/>
+                                    Contáctenos:
+                                    <br/>
+                                    <img class="lazyload" data-src="{{ asset('assets/images/icons/message.svg') }}" alt="mail-icon">
+                                    &nbsp;
+                                    <a href="mailto:{{ projectInfo.email }}">
+                                        {{ projectInfo.email }}
+                                    </a>
+                                </p>
+                            </dt>
+                            {% endif %}
+                            {% if projectInfo and projectInfo.phone %}
+                            <dt class="footer__contact__item">
+                                <img class="lazyload" data-src="{{ asset('assets/images/icons/phone.svg') }}" alt="">
+                                <p>Telefono: {{ projectInfo.phone }}</p>
+                            </dt>
+                            {% endif %}
+                            <dt>
+                                <div class="footer__social-networks footer--subsection">
+                                    <ul>
+                                        <li><a href="https://www.facebook.com/cartelon.cuba/">
+                                                <img class="lazyload" data-src="{{ asset('assets/images/icons/facebook.svg') }}" alt="">
+                                            </a></li>
+                                        <li><a href="https://www.instagram.com/cartelon.cuba/">
+                                                <img class="lazyload" data-src="{{ asset('assets/images/icons/instagram.svg') }}" alt="">
+                                            </a></li>
+                                        {#
+                                        <li><a href="#">
+                                                <img class="lazyload" data-src="{{ asset('assets/images/icons/twitter.svg') }}" alt="">
+                                            </a>
+                                        </li>
+                                        #}
+                                    </ul>
+                                </div>
+                            </dt>
+                        </dl>
+                    </address>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer__copyright">
+            <p>{{ date | date('Y') }} Copyright CartelON Cuba.</p>
+        </div>
+    </div>
+
+    <div class="footer__authors">
+        <p>
+            Desing by <a href="http://guillomoreno.com/">guillomoreno</a>
+            and code by <a href="http://habana.tech">habana.tech</a>
+        </p>
+    </div>
+
+</footer>

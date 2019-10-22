@@ -1,0 +1,23 @@
+<section class="section" id="sites" data-nav-link-prev="#videos-link">
+    <div class="wrapper wrapper--center-text">
+        <h2 class="section__title">Sitios Sugeridos</h2>
+
+        <div class="row row--gutters">
+            {% for site in sites %}
+                <div class="row__medium-4">
+                    <a href="{{ site.url }}"
+                       target="_blank"
+                       rel="noopener">
+                        <div class="logo">
+                            <img class="lazyload blur-up"
+                                 src="{{ asset(site.webPath(20)) }}"
+                                 sizes="(max-width: 760px) 100vw, 33.33vw"
+                                 data-src="{{ asset(site.webPath(500)) }}"
+                                 alt="{{ site.name }}">
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

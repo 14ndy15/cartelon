@@ -1,0 +1,195 @@
+easy_admin:
+    site_name: 'CartelON'
+    design:
+        brand_color: '#0099cc'
+    formats:
+        date: 'd/m/Y'
+        time: 'H:i'
+        datetime: 'd/m/Y H:i'
+    entities:
+        # List the entity class name you want to manage
+        PosterEvent:
+            class: App\Entity\PosterEvent
+            label: 'Proyectos'
+            form:
+               help: 'Aqui puedes crear o actulizar un concurso de carteles, estos permiten mostrar los carteles en la parte media del sitio (justo abajo de noticias)'
+               title: 'Crear o actualizar concurso de carteles'
+               fields:
+                   - {property: 'name', label: 'Nombre', help: 'Usualmente es algo como "Guernica 80 años" o "30 aniversario EICTV"'}
+                   - {property: 'date', label: 'Fecha', help: 'Fecha en que empezo o finalizo el concurso, ten en cuenta que esta fecha se utiliza para mostrar los concursos, <b>los más recientes van primero</b>. <br>Si necesitas cambiar este orden, mira abajo el campo posicion ;)'}
+                   - {property: 'posters', label: 'Carteles', help: 'Referencia a los carteles que ganaron o representan este concurso.'}
+                   - {property: 'file', type: 'file', label: 'Imagen', help: '<b>La imagen que identifica el concurso</b>, usualmente es de color sólido y posee un texto con el nombre del concurso.'}
+                   - {property: 'position', label: 'Posición', help: 'Los concursos se ordenan por fecha, pero si quieres establecer un orden arbitrario, es aquí, <b>los números mayores van primero</b>.'}
+            list:
+               title: 'Proyectos'
+               fields:
+                   - {property: 'name', label: 'Nombre'}
+                   - {property: 'date', label: 'Fecha'}
+                   - {property: 'position', label: 'Posicion'}
+                   - {property: 'posters', label: 'Carteles'}
+                   - {property: 'getWebPath', label: 'Imagen', type: 'image'}
+        Poster:
+           class: App\Entity\Poster
+           label: 'Cartel'
+           form:
+               title: 'Crear o actualizar Cartel'
+               fields:
+                   - { property: 'author', label: 'Autor(es)', help: 'Nombre del autor o autores del cartel, este campo se muesta debajo del cartel en el sitio y en la vista ampliada del cartel.'}
+                   - { property: 'file', type: 'file', label: 'Cartel', help: 'Imagen del cartel'}
+                   - { property: 'fileImageDetail1', type: 'file', label: 'Cartel (detalle 1)', help: 'Imagen de detalle del cartel'}
+                   - { property: 'fileImageDetail2', type: 'file', label: 'Cartel (detalle 2)', help: 'Imagen de detalle del cartel'}
+                   - { property: 'associateEvent', label: 'Proyecto asociado', help: 'Concurso o evento en el cual el cartel participo.'}
+                   - { property: 'position', label: 'Orden de aparicion', help: 'Si existe una jerarquía (premio / lugares) entre los carteles que participaron en el concurso, con este valor se define el orden de aparición. <br> <b>Números menores van primero </b>.'}
+                   - { property: 'date', label: 'Fecha de creación', help: 'Solo se muestra el año'}
+                   - { property: 'description', label: 'Descripción', help: 'Este campo no es obligatorio, de existir se muestra en la vista ampliada del cartel.'}
+           list:
+               title: 'Carteles'
+               fields:
+                   - { property: 'searchableText', label: 'texto'}
+                   - { property: 'author', label: 'Autor'}
+                   - { property: 'getWebPath', label: 'Imagen',  type: 'image'}
+                   - { property: 'getWebPathImageDetail1', label: 'Imagen (detalle 1)',  type: 'image'}
+                   - { property: 'getWebPathImageDetail2', label: 'Imagen (detalle 2)',  type: 'image'}
+                   - { property: 'associateEvent', label: 'Proyecto'}
+                   - { property: 'date', label: 'Fecha de creación'}
+                   - { property: 'position', label: 'Orden de aparicion'}
+        News:
+             class: App\Entity\News
+             label: 'Noticia'
+             form:
+                 title: 'Crear o actualizar noticia'
+                 fields:
+                     - { property: 'title', label: 'Título', help: 'Título de la noticia, <b>es recomendado no superar los 60 caracteres</b>.'}
+                     - { property: 'text', label: 'Texto', help: 'Texto <b>introductorio</b> de la noticia, <b>recomendado no superar los 250 caracteres</b>.'}
+                     - { property: 'datetime', label: 'Fecha y hora de publicación', help: 'Las noticias se ordenan por este campo, donde <b>más recientes primero</b>.'}
+                     - { property: 'file', type: 'file', label: 'Imagen', help: 'Imagen que acompaña a la noticia.'}
+                     - { property: 'fileFile', type: 'file', label: 'Archivo', help: 'Documentos de intéres donde se amplia la informacion de la noticia, de no existir este campo no se muestra.'}
+                     - { property: 'position', label: 'Posición', help: 'Puedes establecer un orden arbitrario, números mayores primeros.'}
+             list:
+                 title: 'Noticias'
+                 fields:
+                     - {property: 'title', label: 'Titulo'}
+                     - {property: 'text', label: 'Texto'}
+                     - {property: 'datetime', label: 'Fecha y hora de publicación'}
+                     - { property: 'position', label: 'Posición'}
+                     - { property: 'getWebPath', label: 'Imagen',  type: 'image'}
+                     - { property: 'getFileWebPath', type: 'file', label: 'Archivo' }
+        Event:
+            class: App\Entity\Event
+            label: 'Evento'
+            form:
+                title: 'Crear o actualizar evento'
+                fields:
+                    - {property: 'name', label: 'Nombre'}
+                    - {property: 'datetime', label: 'Fecha y Hora', help: 'Fecha de realización del evento. <br> <b>Más recientes primero</b>.'}
+                    - {property: 'place', label: 'Lugar', help: 'Locación principal del evento.'}
+                    - {property: 'description', label: 'Descripción', help: 'Descripción de lo ocurrido durante la realización del evento.'}
+                    - {property: 'file', type: 'file', label: 'Imagen', help: 'Se muestra en la sección de eventos.'}
+                    - {property: 'imageGalleries', label: 'Imagenes de la galería', help: 'Referencia a imagenes de la galería. <br> Estas conforman el carousel al expandir el evento.'}
+                    - { property: 'position', label: 'Posición', help: 'Si existen varios eventos puedes establecer un orden arbitrario. <br> <b>Números mayores primeros</b>.'}
+            list:
+               title: 'Eventos'
+               fields:
+                   - {property: 'name', label: 'Nombre'}
+                   - {property: 'datetime', label: 'Fecha y Hora'}
+                   - {property: 'place', label: 'Lugar'}
+                   - {property: 'description', label: 'Descripcion'}
+                   - {property: 'getWebPath', type: 'image', label: 'Imagen'}
+                   - {property: 'imageGalleries', label: 'Imagenes'}
+        ImageGallery:
+            class: App\Entity\ImageGallery
+            label: 'Galeria de Imagenes'
+            form:
+                title: 'Crear o actualizar una imagen'
+                fields:
+                    - {property: 'name', label: 'Titulo', help: 'Este campo es opcional, pero <b>se recomienda rellenarlo</b>, de lo contrario puede ser díficil referirse a esta imagen.'}
+                    - {property: 'file', type: 'file', label: 'Imagen', help: 'Archivo imagen.'}
+                    - {property: 'associateEvent', label: 'Evento asociado', help: 'Evento en el cual esta imagen pertenece al carousel de la descripción.'}
+                    - {property: 'description', label: 'Descripción', help: 'Descripción de la imagen, este valor <b>no se muestra</b> pero ayuda a los buscadores como Google a indexar mejor las imagenes.'}
+            list:
+                title: 'Galeria de Imagenes'
+                fields:
+                    - {property: 'name', label: 'Titulo'}
+                    - {property: 'getWebPath', type: 'image', label: 'Imagen'}
+                    - {property: 'description', label: 'Descripcion'}
+                    - {property: 'associateEvent', label: 'Evento Asociado'}
+        Slide:
+           class: App\Entity\Slide
+           label: 'Slide'
+           form:
+               title: 'Insertar o actualizar un slide'
+               fields:
+                   - { property: 'file', type: 'file', label: 'Cartel', help: 'Cartel que se muestra a la izquierda en pantallas grandes.'}
+                   - { property: 'fileBackground', type: 'file', label: 'Imagen (pauta) de fondo', help: 'Debe de ser una imagen ampliada del cartel con algun efecto, usualmente blur.'}
+                   - { property: 'datetime', label: 'Fecha y hora de publicación', help: 'Las slides se ordenan por este campo, donde <b>más recientes primero</b>.'}
+                   - { property: 'position', label: 'Posición', help: 'Si existen varios slides puedes establecer un orden arbitrario. <br> <b>Números mayores primeros</b>.'}
+           list:
+               title: 'Sliders'
+               fields:
+                   - {property: 'getWebPath', type: 'image', label: 'Cartel'}
+                   - {property: 'getFileBackgroundWebPath', type: 'image', label: 'Imagen (pauta) de fondo'}
+                   - { property: 'datetime', label: 'Fecha y hora de publicación'}
+                   - {property: 'position', label: 'Posición'}
+        Video:
+            class: App\Entity\Video
+            label: 'Video'
+            form:
+                title: 'Crear o editar video'
+                fields:
+                  - { property: 'name', label: 'Nombre'}
+                  - { property: 'iframe', label: 'Código de la barra de navegación de Facebook o Youtube', help: 'Si el video es de facebook se da click en opciones del post, y se selecciona insertar, el código que se muestra se copia aquí. <br>Si el video es de Youtube, se le da click derecho y se selecciona la opcion del menú que dice copiar código de inserción.'}
+                  - { property: 'datetime', label: 'Fecha y hora de publicación', help: 'los videos se ordenan por este campo. <br> <b> Más reciente primero</b>'}
+                  - { property: 'position', label: 'Posición', help: 'Si deseas establecer un orden arbitrario en los videos, puedes hacerlo aqui. <br> <b> Números mayores primero</b>'}
+            list:
+               title: 'Videos'
+               fields:
+                   - { property: 'name', label: 'Nombre'}
+                   - { property: 'datetime', label: 'Fecha y hora de publicación'}
+                   - { property: 'position', label: 'Posición'}
+        ExternalSites:
+            class: App\Entity\ExternalSites
+            label: 'Sitios Sugeridos'
+            form:
+                title: 'Crear o editar un sitio sugerido'
+                fields:
+                    - { property: 'name', label: 'Nombre'}
+                    - { property: 'url', label: 'Sitio web (url)'}
+                    - { property: 'file', type: 'file', label: 'Logo'}
+                    - { property: 'position', label: 'Posición', help: 'Si deseas establecer un orden arbitrario en los sitios, puedes hacerlo aqui. <br> <b> Números mayores primero</b>'}
+            list:
+                title: 'Sitios Sugeridos'
+                fields:
+                    - { property: 'name', label: 'Nombre'}
+                    - {property: 'getWebPath', type: 'image', label: 'Logo'}
+                    - { property: 'url', label: 'Sitio web (url)'}
+                    - { property: 'position', label: 'Posición', help: 'Si deseas establecer un orden arbitrario en los sitios, puedes hacerlo aqui. <br> <b> Números mayores primero</b>'}
+        ProjectInfo:
+            class: App\Entity\ProjectInfo
+            label: 'Información de CartelON'
+            form:
+                title: 'Editar Información'
+                fields:
+                    - { property: 'description', label: 'Descripción'}
+                    - { property: 'posterInfo', label: 'Texto sobre los carteles'}
+                    - { property: 'amountSlides', label: 'Cantidad de Slides a mostrar inicialmente.', help: 'Este número debe ser no-negativo o valores por defecto seran usados.' }
+                    - { property: 'amountNews', label: 'Cantidad de Noticias a mostrar inicialmente.', help: 'Este número debe ser no-negativo o valores por defecto seran usados.' }
+                    - { property: 'amountPosterEvent', label: 'Cantidad de Proyectos a mostrar inicialmente.', help: 'Este número debe ser no-negativo o valores por defecto seran usados.' }
+                    - { property: 'amountEvents', label: 'Cantidad de Eventos a mostrar inicialmente.', help: 'Este número debe ser no-negativo o valores por defecto seran usados.' }
+                    - { property: 'amountVideos', label: 'Cantidad de Videos a mostrar inicialmente.', help: 'Este número debe ser no-negativo o valores por defecto seran usados.' }
+                    - { property: 'address', label: 'Dirección'}
+                    - { property: 'phone', label: 'Teléfono'}
+                    - { property: 'email', label: 'Correo Electronico'}
+            list:
+                title: 'Información'
+                help: '<strong>Solo puede existir un único elemento de este tipo</strong>'
+                fields:
+                    - { property: 'description', label: 'Descripción'}
+                    - { property: 'posterInfo', label: 'Carteles'}
+                    - { property: 'amountSlides', label: 'Slides' }
+                    - { property: 'amountNews', label: 'Noticias' }
+                    - { property: 'amountPosterEvent', label: 'Proyectos' }
+                    - { property: 'amountEvents', label: 'Eventos' }
+                    - { property: 'amountVideos', label: 'Videos' }
+                    - { property: 'address', label: 'Dirección'}
+                    - { property: 'phone', label: 'Teléfono'}
+                    - { property: 'email', label: 'Correo'}

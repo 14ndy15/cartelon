@@ -1,0 +1,14 @@
+.video{
+
+    & > div.row{
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 3em;
+    }
+
+    &__item{
+        display: flex;
+        float: none;
+        max-width: 100%;
+    }
+}

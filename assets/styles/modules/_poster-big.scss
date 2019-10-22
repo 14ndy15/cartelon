@@ -1,0 +1,142 @@
+.poster-big{
+    transform: scale(1);
+    opacity: 0;
+    z-index: -1;
+    font-weight: 300;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(#fff, .98);
+    transition: all .25s ease-in-out;  
+
+    &__content{
+        display: flex;
+        flex-wrap: wrap;
+
+        @mixin atMedium{
+            display: block;
+        }
+
+        & .poster-big__details{
+            order: 2;
+            height: auto;
+            width: 90vw;
+
+            @mixin atMedium{
+                height: 100vh;
+                width: auto;
+            }
+
+            &__items{
+                display: flex;
+                
+                @mixin atMedium{
+                    display: block;
+                }
+
+                & a{
+                    margin: auto;
+                }
+            }
+
+        }
+
+        &__image{
+            order: 1;
+        }
+
+        &__description{
+            order: 3;
+        }
+    }
+
+    &__overflow-scroll-y{
+        overflow-y: scroll;
+        overflow-x: hidden;
+        max-height: 105vh;        
+
+        @mixin atMedium {
+            overflow-y: hidden;
+        }
+    }
+
+    & img{
+        max-height: 70vh;        
+        margin: auto;
+        margin-top: 5%;
+        width: auto;
+        max-width: 100%;
+        border: 1px grey solid;
+
+        @mixin atSmall {
+            max-height: 90vh;
+        }
+    }
+
+    &__details{
+        position: relative;
+        height: 100vh;
+
+        &__items{
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translateY(-50%);
+
+
+            & img{
+                width: 75px;
+                height: auto;
+            }
+
+            &__image{
+                &--none{
+                    display: none;
+                }
+            }
+        }
+
+    }
+
+    &__description{
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+
+        @mixin atMedium {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%) translateX(0);
+            left: auto;
+        }
+
+        &__overflow-scroll-y{
+            @mixin atMedium {
+                max-height: 70vh;
+                overflow-y: auto;
+                width: 75%;
+            }
+        }
+
+        &__text{
+            margin-bottom: 3em;
+
+            @mixin atMedium {
+                margin-right: 2em;  
+            }            
+        }
+
+    }
+
+    &--is-visible{
+        transform: scale(1);
+        z-index: 10;
+        opacity: 1;
+    }
+}
+
+.overflow-hidden{
+    overflow: hidden;
+}

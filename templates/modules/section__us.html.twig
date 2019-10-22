@@ -1,0 +1,36 @@
+<section class="section" id="us" data-nav-link="#us-link" data-nav-link-prev="#start-link">
+    <div class="wrapper wrapper-medium">
+
+        <div class="row us-icons">
+            <div class="row__medium-4">
+                <img class="lazyload" data-src="{{ asset('assets/images/icons/cartel_cubano.svg') }}">
+                <p>Cartel Cubano</p>
+            </div>
+            <div class="row__medium-4">
+                <img class="lazyload" data-src="{{ asset('assets/images/icons/tradición_serigrafica.svg') }} ">
+                <p>Tradici&oacute;n Serigr&aacute;fica</p>
+            </div>
+            <div class="row__medium-4">
+                <img class="lazyload" data-src="{{ asset('assets/images/icons/certificado_autentico.svg') }}">
+                <p>Autenticidad Certificada</p>
+            </div>
+        </div>
+
+        <h2 class="section__title">Nosotros</h2>
+        <div class="wrapper wrapper--big">
+            <p>
+                {% if projectInfo and projectInfo.description %}
+                    {{ projectInfo.description | raw | nl2br }}
+                {% else %}
+                    <strong>CartelON. Gráfica Cubana</strong>, programa de fomento al diseño serigráfico en Cuba.
+                    Genera y promueve concursos de carteles dando continuidad a la tradición del cartel
+                    cultural serigráfico en el país. Gestiona además la impresión y montaje de sus exposiciones asociadas.
+                    Desde 2016 ha generado obras de alto valor estético y artístico, asociado a reconocidos
+                    diseñadores en el panorama nacional, así como descubriendo nuevos talentos entre los jóvenes.
+                    CartelON certifica la autenticidad de sus obras, todas en edición limitada,
+                    bajo contrato firmado con los artistas.
+                {% endif %}
+            </p>
+        </div>
+    </div>
+</section>

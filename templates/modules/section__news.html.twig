@@ -1,0 +1,95 @@
+<section class="section" id="news" data-nav-link="#news-link" data-nav-link-prev="#us-link">
+    <div class="wrapper">
+        <h2 class="section__title">Noticias</h2>
+        <div id="news-container" class="section__container">
+            {% for new in news %}
+                <div class="info-block">
+                    <div class="row row--equal-height row--gutters-bottom">
+
+                        {% if loop.index0 % 2 == 0 %}
+                            <div class="row__large-6">
+                                <img class="lazyload blur-up"
+                                     src="{{ asset(new.getWebPath(20)) }}"
+                                     sizes="(max-width: 1300px) 100vw, 50vw"
+                                     data-srcset="
+                                        {% for dimension in new.getConstraintWideDimensions %}
+                                            {% if not loop.last %}
+                                                {{ asset(new.webPath(dimension)) }} {{ dimension }}w,
+                                            {% else %}
+                                                {{ asset(new.webPath(dimension)) }} {{ dimension }}w
+                                            {% endif %}
+                                        {% endfor %}"
+                                     alt="{{ new.title }}">
+                            </div>
+
+                            <div class="row__large-6">
+                                <div class="info-block__description">
+                                    <h3 class="info-block__description__title">
+                                        {{ new.title }}
+                                    </h3>
+                                    <h4 class="info-block__description__subtitle">
+                                        {{ new.datetime | localizeddate('full', 'none', 'es') }}
+                                    </h4>
+                                    <p class="info-block__description__text">
+                                        {{ new.text }}
+                                    </p>
+                                    {% if new.getFileWebPath %}
+                                        <div class="wrapper--center-text">
+                                            <a class="btn btn--blue" href="{{ new.getFileWebPath }}">Descargar bases</a>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="row__large-6">
+                                <div class="info-block__description">
+                                    <h3 class="info-block__description__title">
+                                        {{ new.title }}
+                                    </h3>
+                                    <h4 class="info-block__description__subtitle">
+                                        {{ new.datetime | localizeddate('full', 'none', 'es') }}
+                                    </h4>
+                                    <p class="info-block__description__text">
+                                        {{ new.text }}
+                                    </p>
+                                    {% if new.getFileWebPath %}
+                                        <div class="wrapper--center-text">
+                                            <a class="btn btn--blue" href="{{ new.getFileWebPath }}">Descargar bases</a>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="row__large-6">
+                                <img class="lazyload blur-up"
+                                     src="{{ asset(new.getWebPath(20)) }}"
+                                     sizes="(max-width: 1300px) 100vw, 50vw"
+                                     data-srcset="
+                                    {% for dimension in new.getConstraintWideDimensions %}
+                                        {% if not loop.last %}
+                                            {{ asset(new.webPath(dimension)) }} {{ dimension }}w,
+                                        {% else %}
+                                            {{ asset(new.webPath(dimension)) }} {{ dimension }}w
+                                        {% endif %}
+                                    {% endfor %}"
+                                     alt="{{ new.title }}">
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        {% if moreNews %}
+            <div id="news__load__wrapper" class="load__animation__wrapper">
+                <div class="load__animation__wrapper__element"></div>
+            </div>
+
+            <div id="wrapper-loadMoreNews" class="wrapper--center-text">
+                <a href="#" id="loadMoreNews" class="btn btn--blue-inverse">Ver más noticias</a>
+            </div>
+        {% endif %}
+
+    </div>
+
+</section>

@@ -1,0 +1,116 @@
+<section class="section" id="posters" data-nav-link="#posters-link" data-nav-link-prev="#news-link">
+    <div class="wrapper">
+        <h2 class="section__title">Carteles</h2>
+
+        <div class="wrapper wrapper--big">
+            <p class="poster__text">
+                {% if projectInfo and projectInfo.posterInfo %}
+                    {{ projectInfo.posterInfo | raw | nl2br }}
+                {% else %}
+                    Impresión serigráfica, Cartulina 180gramos, Cuño seco, seriados y firmados, Formato 50x70cm,
+                    Edición Limitada 50U.
+                    <br/>
+                    Printed on silkscreen, cardboard 180gr, dry stamp, serials and signed,
+                    Format 19 ½ x 27 ½ “, Limited edition 50U.
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="filter">
+            <form class="filter__form">
+                <label for="#filter" class="filter__text">Puedes buscar por autor, proyecto o año</label>
+                <input class="filter__input" type="text" id="filter" placeholder="Diseñador, proyecto, año" required>
+                <div class="filter__reset"></div>
+                <input type="submit" class="filter__button btn btn--blue-inverse" value="Buscar">
+            </form>
+        </div>
+
+        <div class="poster">
+
+            <div class="poster__initial poster--visible  row row--gutters">
+                {% set index = 0 %}
+                {% for posterEvent in posterEvents %}
+
+                    <div class="row-6 row__medium-4 row__large-3 row__xlarge-2 poster__item poster__item--no-hover"
+                         data-description="{{ posterEvent.name }}">
+                        <img class="lazyload blur-up"
+                             decoding="async"
+                             sizes="(max-width: 760px) 50vw, 25vw"
+                             src="{{ asset(posterEvent.webPath(20)) }}"
+                             data-srcset="
+                            {% for dimension in posterEvent.wideDimensions %}
+                                {% if not loop.last %}
+                                    {{ asset(posterEvent.webPath(dimension)) }} {{ dimension }}w,
+                                {% else %}
+                                    {{ asset(posterEvent.webPath(dimension)) }} {{ dimension }}w
+                                {% endif %}
+                            {% endfor %}
+                        "
+                         alt=" {{ posterEvent.name }}">
+                    </div>
+
+                    {% for poster in posterEvent.posters %}
+                        {% set alt = poster.author ~' '~ posterEvent.name %}
+                        <div class="row-6 row__medium-4 row__large-3 row__xlarge-2 poster__item">
+                            <div class="poster__item__overflow">
+                                <a href="#"
+                                   data-poster-big="{{ index }}"
+                                   data-poster-max-width="{{ poster.getConstraintWideDimensions | last }}"
+                                   data-poster-img="{{ asset(poster.getWebPath(null))}}"
+                                   data-poster-img-details1-max-width="{{ poster.getConstraintWideDimensionsImageDetails1 | last }}"
+                                   data-poster-img-detail1="{{ asset(poster.getWebPathImageDetail1(null))}}"
+                                   data-poster-img-details2-max-width="{{ poster.getConstraintWideDimensionsImageDetails2 | last }}"
+                                   data-poster-img-detail2="{{ asset(poster.getWebPathImageDetail2(null))}}"
+                                   data-poster-title="{{ posterEvent.name }}"
+                                   data-poster-author="{{ poster.author }}"
+                                   data-poster-year="{{ poster.date == '' ? '' : poster.date  | date('Y') }}"
+                                   data-poster-description="{{ poster.description | nl2br }}">
+
+                                <img
+                                    class="lazyload blur-up"
+                                    decoding="async"
+                                    sizes="(max-width: 530px) 50vw, (max-width: 800px) 33.33vw, 25vw"
+                                    src="{{ asset(poster.webPath(20)) }}"
+                                    data-srcset="
+                                    {% for dimension in poster.getConstraintWideDimensions %}
+
+                                        {% if not loop.last %}
+                                            {{ asset(poster.webPath(dimension)) }} {{ dimension }}w,
+                                        {% else %}
+                                            {{ asset(poster.webPath(dimension)) }} {{ dimension }}w
+                                        {% endif %}
+
+                                    {% endfor %}
+                                " alt="{{ alt }}">
+                                </a>
+                            </div>
+                            <noscript>
+                                <img src="{{ asset(poster.webPath()) }}" alt=" {{ alt }} ">
+                            </noscript>
+
+                            <p class=" poster__item__author">{{ poster.author }}</p>
+                        </div>
+                        {% set index = index+1 %}
+                    {% endfor %}
+
+                {% endfor %}
+            </div>
+
+            <div class="poster__search  row row--gutters">
+            </div>
+
+            {% if morePosterEvents %}
+                <div id="posters__load__wrapper" class="load__animation__wrapper">
+                    <div class="load__animation__wrapper__element"></div>
+                </div>
+
+                <div class="wrapper--center-text poster__button__wrapper">
+                    <a href="#" id="loadMorePosters" class="btn btn--blue-inverse">Ver más</a>
+                </div>
+            {% endif %}
+
+        </div>
+
+
+    </div>
+</section>

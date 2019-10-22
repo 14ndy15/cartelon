@@ -1,0 +1,177 @@
+.event{
+    position: relative;
+    overflow: hidden;
+    margin: 0.25em 0.25em;
+    height: auto;
+    min-height: 50vh;
+    display: flex;
+    float: none;
+
+    &--center{
+        @mixin atMedium {
+            left: 50%;
+        }
+    }
+
+    img{
+        position: absolute;
+        width: 250%;
+
+        @mixin atLarge {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    &__title{
+        opacity: 1;
+        color: #fff;
+        text-align: center;
+        font-size: 1.4rem;
+    }
+
+    &__description{
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        transform: translateY(-50%);
+
+        &__text{
+            text-align: center !important;
+            color: #fff;
+            margin: 3em auto;
+            opacity: 1;
+        }
+    }
+
+    &__button{
+        position: absolute;
+        bottom: 10%;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: all .5s ease-in-out;
+    }
+
+    @keyframes enterIn {
+        from {
+            opacity: 0;
+            transform: scale(1.2);
+        }
+        to{
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    &__expand{
+        display: none;
+        opacity: 0;
+        background-color: $mainDark;
+        position: relative;
+        color: #fff;
+        margin-left: -13PX;
+        margin-right: -13px;
+        padding: 2rem;
+        animation: .3s ease-out 1 fadeOut;
+
+        @mixin atSmall {
+            content: "";
+            clear: both;
+            padding: 4rem;
+            padding-top: 0;
+            padding-bottom: 6rem;
+            margin-left: calc(-65px - 13px);
+            margin-right: calc(-65px - 13px);
+        }
+
+        &--visible{
+            position: relative;
+            opacity: 1;
+            display: flex;
+            animation: .3s ease-in 1 enterIn;            
+            top: -0.25em;
+
+            &__first-event{
+                margin-top: -3em;
+            }
+        }
+
+        &__image{            
+            width: 100%;            
+            height: auto;
+        }
+
+        &__title{
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        &__subtitle{
+            font-size: 1.25em;
+            margin-top: 0;
+        }
+
+        &__text{
+            color: #fff;
+        }
+    }
+
+    &--visible{
+
+        .event__title{
+            opacity: 0;
+        }
+
+        .event__description__text{
+            opacity: 0;
+        }
+
+        .event__button{
+            position: absolute;
+            width: 3em;
+            height: 3em;
+            bottom: -1.75em;
+            background-color: $mainDark;
+            transform: translate(-50%, -50%);     
+            border-radius: 50%;
+            z-index: 1;
+
+            &--event-0{
+                bottom: -1em;
+
+                @mixin atSmall {
+                    bottom: -3em;
+                }
+            }
+
+            & a{
+                display: none;
+            }
+
+            &::before{
+                content: '';
+                width: 1.5em;
+                height: .3em;
+                background-color: white;
+                position: absolute;
+                top: 40%;
+                left: 46%;
+                transform: translateY(-50%) translateX(-50%) rotate(45deg);
+                transform-origin: 0 0;
+            }
+
+            &::after{
+                content: '';
+                width: 1.5em;
+                height: .3em;
+                background-color: white;
+                position: absolute;
+                top: 40%;
+                right: 46%;
+                transform: translateY(-50%) translateX(50%) rotate(-45deg);
+                transform-origin: 100% 0%;
+            }
+        }
+
+    }
+}

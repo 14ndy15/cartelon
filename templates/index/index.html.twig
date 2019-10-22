@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block preload %}
+    <link rel="preload" href="{{ asset('assets/css/styles.css') }}" as="style">
+    {% if slides | length > 0 %}
+        <link rel="preload" href="{{ asset(slides[0].getFileBackgroundWebPath) }}" as="image">
+        <link rel="preload" href="{{ asset('assets/images/hero-white.svg') }}" as="image">
+        {% if slides | length > 1 %}
+            <link rel="preload" href="{{ asset(slides[1].getFileBackgroundWebPath) }}" as="image">
+        {% endif %}
+    {% else %}
+        <link rel="preload" href="{{ asset('assets/images/hero/Grafica-08.jpg') }}" as="image">
+    {% endif %}
+{% endblock %}
+
+{% block stylesheets %}
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet"> 
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+{% endblock %}
+
+{% block javascripts_header %}
+    <script src="{{ asset('assets/js/Vendor.js') }}"></script>        
+{% endblock %}
+
+
+{% block body %}
+
+    {% include 'modules/header.html.twig' %}
+
+    {% include 'modules/section__start.html.twig' with {'slides': slides} only %}
+
+    {% include 'modules/section__us.html.twig' with {'projectInfo': projectInfo} only %}
+
+    {% include 'modules/section__news.html.twig' with {'news': news, 'moreNews': moreNews} only %}
+
+    {% include 'modules/section__posters.html.twig' with {'posterEvents' : posterEvents, 'projectInfo': projectInfo, 'morePosterEvents': morePosterEvents } only %}
+
+    {% include 'modules/section__events.html.twig' with {'events' : events, 'moreEvent':moreEvent} only%}
+
+    {% include 'modules/section__videos.html.twig' with {'videos': videos, 'moreVideos':moreVideos} only %}
+
+    {% include 'modules/section__sites.html.twig' %}
+
+    {% include 'modules/footer.html.twig' with {'date' : date, 'projectInfo': projectInfo} only %}
+
+    {% include 'modules/poster-big.html.twig' %}
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/js/App.js') }}"></script>
+{% endblock %}

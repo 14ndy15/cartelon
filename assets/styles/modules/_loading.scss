@@ -1,0 +1,39 @@
+@keyframes loading {
+  0% {
+    right: 100%;
+    background-color: rgba($mainBlue, 0.5);
+  }
+  50% {
+    right: 50%;
+    background-color: $mainBlue;
+  }
+  100% {
+    right: -4em;
+    background-color: rgba($mainBlue, 0.5);;
+  }
+
+}
+
+.load__animation__wrapper{
+  margin: 3em auto;
+
+
+  &--is-visible {
+    display: flex;
+    height: 1em;
+    width: 80%;
+    position: relative;
+    overflow: hidden;
+
+    & > .load__animation__wrapper__element {
+        background-color: $mainBlue;
+        height: 0.5em;
+        width: 4em;
+        position: absolute;
+        transform-origin: 0 0;
+        animation: loading 3.5s cubic-bezier(.46, .03, .52, .96) infinite;
+      }
+
+  }
+
+}

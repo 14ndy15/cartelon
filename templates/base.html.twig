@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charset="UTF-8">
+
+        {% set description = "CartelON. Gráfica Cubana, programa de fomento al diseño serigráfico en Cuba. Genera y promueve concursos de carteles dando continuidad a la tradición del cartel cultural serigráfico en el país. Gestiona además la impresión y montaje sus exposiciones asociadas." %}
+        {% set title = "CartelON | Gráfica Cubana" %}
+
+        <meta name="description" content="{{ description }}">
+
+        <meta property="og:title" content="{{ title }}" />
+        <meta property="og:description" content="{{ description }}" />
+        <meta property="og:image" content="https://carteloncuba.com/assets/images/hero/Grafica-08.jpg" />
+
+        {# Color chrome tab #}
+        <meta name="theme-color" content="#0099cc">
+
+        <link rel="icon" href="favicon.svg">
+        <title>{{ title }}</title>
+        {% block preload %}{% endblock %}
+        {% block stylesheets %}{% endblock %}
+        {% block javascripts_header %}{% endblock %}
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127067962-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-127067962-1');
+        </script>
+
+    </head>
+    <body style="overflow-x: hidden">
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
