@@ -5,7 +5,7 @@
         margin-bottom: 3em;
     }
 
-    @mixin atLarge {
+    @include atLarge {
         padding: 3.25rem 0;
       }
       

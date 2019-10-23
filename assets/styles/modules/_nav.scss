@@ -2,7 +2,7 @@
 
     &--pull-right{ 
         
-        @mixin atLarge {
+        @include atLarge {
             float: right;    
         }
 
@@ -11,7 +11,7 @@
     ul{
         margin: 0;
         padding: 0;
-        @mixin clearfix;
+        @include clearfix;
     }
 
     li{
@@ -27,7 +27,7 @@
             color: #fff;            
         }
 
-        @mixin atMedium {
+        @include atMedium {
             margin-left: 20px;
 
             &.nav__link--active{
@@ -41,13 +41,13 @@
 
     li:last-child{
         margin-left: 0;
-        @mixin atMedium {
+        @include atMedium {
             margin-left: 20px;
         }
     }
 
     a{
-        color: #455c64;
+        color: white;
         text-decoration: none;
         font-weight: 300;
         transition: background-color .2s ease-in;

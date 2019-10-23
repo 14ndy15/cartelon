@@ -8,7 +8,7 @@
     float: none;
 
     &--center{
-        @mixin atMedium {
+        @include atMedium {
             left: 50%;
         }
     }
@@ -17,7 +17,7 @@
         position: absolute;
         width: 250%;
 
-        @mixin atLarge {
+        @include atLarge {
             width: 100%;
             height: auto;
         }
@@ -74,7 +74,7 @@
         padding: 2rem;
         animation: .3s ease-out 1 fadeOut;
 
-        @mixin atSmall {
+        @include atSmall {
             content: "";
             clear: both;
             padding: 4rem;
@@ -139,7 +139,7 @@
             &--event-0{
                 bottom: -1em;
 
-                @mixin atSmall {
+                @include atSmall {
                     bottom: -3em;
                 }
             }

@@ -15,7 +15,7 @@
         display: flex;
         flex-wrap: wrap;
 
-        @mixin atMedium{
+        @include atMedium{
             display: block;
         }
 
@@ -24,7 +24,7 @@
             height: auto;
             width: 90vw;
 
-            @mixin atMedium{
+            @include atMedium{
                 height: 100vh;
                 width: auto;
             }
@@ -32,7 +32,7 @@
             &__items{
                 display: flex;
                 
-                @mixin atMedium{
+                @include atMedium{
                     display: block;
                 }
 
@@ -57,7 +57,7 @@
         overflow-x: hidden;
         max-height: 105vh;        
 
-        @mixin atMedium {
+        @include atMedium {
             overflow-y: hidden;
         }
     }
@@ -70,7 +70,7 @@
         max-width: 100%;
         border: 1px grey solid;
 
-        @mixin atSmall {
+        @include atSmall {
             max-height: 90vh;
         }
     }
@@ -105,7 +105,7 @@
         left: 50%;
         transform: translateX(-50%);
 
-        @mixin atMedium {
+        @include atMedium {
             position: absolute;
             top: 50%;
             transform: translateY(-50%) translateX(0);
@@ -113,7 +113,7 @@
         }
 
         &__overflow-scroll-y{
-            @mixin atMedium {
+            @include atMedium {
                 max-height: 70vh;
                 overflow-y: auto;
                 width: 75%;
@@ -123,7 +123,7 @@
         &__text{
             margin-bottom: 3em;
 
-            @mixin atMedium {
+            @include atMedium {
                 margin-right: 2em;  
             }            
         }

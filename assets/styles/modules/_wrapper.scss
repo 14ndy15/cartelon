@@ -23,12 +23,12 @@
         }
     }
 
-    @mixin atSmall {
+    @include atSmall {
         margin-left: 65px;
         margin-right: 65px;
     }
 
-    @mixin atXLarge {
+    @include atXLarge {
         margin-left: 80px;
         margin-right: 80px;
     }

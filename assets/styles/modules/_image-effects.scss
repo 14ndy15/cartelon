@@ -16,7 +16,7 @@
     & .blur-up.lazyloaded {
         box-shadow:  0 0 .2em $mainGrey !important;
     
-        @mixin atSmall {
+        @include atSmall {
             box-shadow:  0 0 .7em $mainGrey !important;
         }
     }

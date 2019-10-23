@@ -1,4 +1,4 @@
-@import "./../../../node_modules/flickity/dist/flickity.css";
+@import "flickity/dist/flickity.css";
 
 
 .carousel{
@@ -19,7 +19,7 @@
         max-height: 80vh;
         overflow: hidden;
 
-        @mixin atSmall {
+        @include atSmall {
             max-height: 100vh;
         }
     }
@@ -43,7 +43,7 @@
     width: 44px;
     height: 44px;
 
-    @mixin atSmall {
+    @include atSmall {
         width: 55px;
         height: 55px;
     }
@@ -65,7 +65,7 @@
         width: 44%;
         height: 44%;
 
-        @mixin atSmall {
+        @include atSmall {
             width: 50%;
             height: 50%;
         }

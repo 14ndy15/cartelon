@@ -23,7 +23,7 @@
         padding: 45px 40px;
         padding-top: 25px;
 
-        @mixin atSmall {
+        @include atSmall {
             padding: 50px 50px;
             
         }
@@ -55,7 +55,7 @@
             padding-bottom: 20px;
         }
 
-        @mixin atSmall {
+        @include atSmall {
             &--float{
                 margin-left: 3.125rem;
                 margin-right: 3.125rem;

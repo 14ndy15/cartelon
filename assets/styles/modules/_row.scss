@@ -1,11 +1,11 @@
 .row{
 
-    @mixin clearfix;
+    @include clearfix;
 
     &--gutters {        
         margin-bottom: -20px;
 
-        @mixin atSmall {
+        @include atSmall {
             margin-right: -20px;
         }
     }
@@ -14,7 +14,7 @@
         padding-bottom: 0px;
         padding-right: 15px;
 
-        @mixin atMedium {
+        @include atMedium {
             padding-right: 20px;
             padding-bottom: 20px;
         }        
@@ -34,7 +34,7 @@
         width: 50%;
     }
 
-    @mixin atMedium {
+    @include atMedium {
 
         &--gutters {
             margin-right: -50px;
@@ -91,7 +91,7 @@
         }
     }
 
-    @mixin atLarge{
+    @include atLarge{
 
         &--gutters > div:first-child{
             padding-bottom: 50px;
@@ -128,7 +128,7 @@
         }
     }
 
-    @mixin atXLarge{
+    @include atXLarge{
 
         &__xlarge-2{
             float: left;
@@ -138,7 +138,7 @@
 
     &--equal-height{
 
-        @mixin atMedium {
+        @include atMedium {
             display: flex;
             flex-wrap: wrap;
 
