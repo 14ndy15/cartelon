@@ -16,7 +16,7 @@
 
                     <img class="large-hero__image-poster lazyload blur-up"
                          src="{{ asset(slide.getWebPath(20)) }}"
-                         sizes="(max-width: 799px) 0vw, 50vw"
+                         sizes="(min-width: 800px) 50vw, 90vw"
                          data-srcset="
                                 {% for dimension in slide.getConstraintWideDimensions %}
                                     {% if not loop.last %}

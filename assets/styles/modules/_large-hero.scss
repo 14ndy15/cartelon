@@ -22,10 +22,13 @@
     }
     
     &__image-poster{
-        display: none;
+        position: relative;
+        display: block;
+        width: 80%;
+        top: 25%;
+        margin: auto;
 
         @include atMedium {
-            display: block;
             position: relative;
             top: 50%;
             left: 25%;
@@ -36,20 +39,16 @@
     }
 
     &__logo{
-        position: absolute;
-        display: block;
-        top: 50%;
-        left: 50%;
-        transform: translate(-47%, -50%);
-        height: 18em;
-        margin-bottom: 2em;
-        
+        display: none;
 
         @include atMedium {
+            position: absolute;
+            display: block;
             height: 20em;
             top: 50%;
             left: 68%;
             transform: translate(-47%, -50%);
+            margin-bottom: 2em;
             transition: opacity .25s cubic-bezier(.95,.05,.8,.04);
             transform-origin: 50% 50%;
         }
