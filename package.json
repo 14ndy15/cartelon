@@ -33,7 +33,7 @@
     "flickity": "^2.1.2",
     "jquery": "^3.3.1",
     "jquery-smooth-scroll": "^2.2.0",
-    "lazysizes": "^4.0.4",
+    "lazysizes": "^5.2.2",
     "natives": "^1.1.6",
     "normalize.css": "^8.0.0",
     "waypoints": "^4.0.1"
